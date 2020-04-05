@@ -1,0 +1,8 @@
+obj/
+bin/
+wwwroot/
+appsettings.json
+appsettings.Development.json
+CRUD.csproj
+CRUD.csproj.user
+Properties/

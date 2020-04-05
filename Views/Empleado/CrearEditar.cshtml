@@ -1,0 +1,63 @@
+﻿@model CRUD.Models.Entities.Empleado
+
+@{
+    ViewData["Title"] = "Crear Empleado";
+}
+
+<h1>Crear - Modificar</h1>
+
+<h4>Empleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="CrearEditar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEmpleado" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Documento" class="control-label"></label>
+                    <input asp-for="Documento" class="form-control" />
+                    <span asp-validation-for="Documento" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group col-md-6">
+                    <label asp-for="Cargo" class="control-label"></label>
+                    <select asp-for="Cargo" asp-items="@(/*CAMBIOOOOOO*/new SelectList(ViewBag.Cargos,"IdCargo", "Cargo"))" class="form-control">
+                      <option  disabled selected>Elija una opcion</option>
+
+                    </select>
+                    <span asp-validation-for="Cargo" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <button type="submit" value="Aceptar" class="btn btn-primary btn-block">
+                        <i class="fas fa-check"></i> Aceptar
+                    </button>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fas fa-backspace"></i> Volver</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}}
+

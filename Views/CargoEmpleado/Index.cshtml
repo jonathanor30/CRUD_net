@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CRUD.Models.Entities.CargoEmpleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CrearEditarCargo">Crear Cargo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)                 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    //cambioooo
+    @if (item.IdCargo != 12)
+    {
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargo)
+            </td>
+            <td>
+                <a asp-action="CrearEditarCargo" asp-route-id="@item.IdCargo">Editar</a>
+                <a asp-action="Eliminar" asp-route-id="@item.IdCargo" onclick="return confirm ('Deseas eliminar este cargo?')"><i class="fa fa-trash-alt fa-lg"></i>Eliminar</a>
+            </td>
+        </tr>
+        }
+    }
+    </tbody>
+</table>
